@@ -1,84 +1,84 @@
 create table locauto.categorie
 (
-    id_categorie varchar(1)  not null
-        primary key,
-    libelle      varchar(50) not null,
-    prix         int         not null
+    id_categorie varchar(1) not null
+    primary key,
+    libelle varchar(50) not null,
+    prix int not null
 );
 
 create table locauto.marque
 (
-    id_marque int         not null
-        primary key,
+    id_marque int not null
+    primary key,
     libelle   varchar(50) not null
 );
 
 create table locauto.modele
 (
-    id_modele    int          not null
-        primary key,
-    libelle      varchar(50)  not null,
-    id_categorie varchar(1)   not null,
-    id_marque    int          not null,
-    image        varchar(100) not null,
+    id_modele int not null
+    primary key,
+    libelle varchar(50) not null,
+    id_categorie varchar(1) not null,
+    id_marque int not null,
+    image varchar(100) not null,
     constraint Modele_Categorie_FK
-        foreign key (id_categorie) references categorie (id_categorie),
+    foreign key (id_categorie) references categorie (id_categorie),
     constraint Modele_Marque0_FK
-        foreign key (id_marque) references marque (id_marque)
+    foreign key (id_marque) references marque (id_marque)
 );
 
 create table locauto.option
 (
-    id_option int          not null
-        primary key,
-    libelle   varchar(100) not null,
-    prix      decimal      not null
+    id_option int not null
+    primary key,
+    libelle varchar(100) not null,
+    prix decimal not null
 );
 
 create table locauto.type_de_client
 (
-    id_type_de_client int          not null
-        primary key,
-    libelle           varchar(100) not null
+    id_type_de_client int not null
+    primary key,
+    libelle varchar(100) not null
 );
 
 create table locauto.client
 (
-    id_client         int auto_increment
-        primary key,
-    nom               varchar(50)  not null,
-    prenom            varchar(50)  not null,
-    adresse           varchar(100) not null,
-    id_type_de_client int          not null,
+    id_client int auto_increment
+    primary key,
+    nom varchar(50) not null,
+    prenom varchar(50) not null,
+    adresse varchar(100) not null,
+    id_type_de_client int not null,
     constraint Client_Type_de_client_FK
-        foreign key (id_type_de_client) references type_de_client (id_type_de_client)
+    foreign key (id_type_de_client) references type_de_client (id_type_de_client)
 );
 
 create table locauto.voiture
 (
-    id_voiture      int auto_increment
-        primary key,
+    id_voiture int auto_increment
+    primary key,
     immatriculation varchar(50) not null,
-    compteur        int         not null,
-    id_modele       int         not null,
+    compteur int not null,
+    id_modele int not null,
     constraint Voiture_Modele_FK
-        foreign key (id_modele) references modele (id_modele)
+    foreign key (id_modele) references modele (id_modele)
 );
 
 create table locauto.location
 (
-    id_location    int auto_increment
-        primary key,
-    date_debut     date not null,
-    date_fin       date not null,
+    id_location int auto_increment
+    primary key,
+    date_debut date not null,
+    date_fin date not null,
     compteur_debut int  not null,
-    compteur_fin   int  not null,
-    id_client      int  not null,
-    id_voiture     int  not null,
+    compteur_fin int  not null,
+    id_client int  not null,
+    id_voiture int  not null,
     constraint Location_Client_FK
-        foreign key (id_client) references client (id_client),
+    foreign key (id_client) references client (id_client),
     constraint Location_Voiture0_FK
-        foreign key (id_voiture) references voiture (id_voiture)
+    foreign key (id_voiture) references voiture (id_voiture)
 );
 
 create table locauto.choix_option
@@ -87,9 +87,9 @@ create table locauto.choix_option
     id_location int not null,
     primary key (id_option, id_location),
     constraint choix_Location0_FK
-        foreign key (id_location) references location (id_location),
+    foreign key (id_location) references location (id_location),
     constraint choix_Option_FK
-        foreign key (id_option) references `option` (id_option)
+    foreign key (id_option) references `option` (id_option)
 );
 
 INSERT INTO locauto.type_de_client
