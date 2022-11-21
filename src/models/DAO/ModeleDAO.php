@@ -21,8 +21,9 @@ class ModeleDAO
         $this->categorieDAO = CategorieDAO::getInstance();
     }
 
-    public static function getInstance(): ModeleDAO {
-        if(!isset(self::$instance)) {
+    public static function getInstance(): ModeleDAO
+    {
+        if (!isset(self::$instance)) {
             self::$instance = new ModeleDAO();
         }
         return self::$instance;
@@ -68,7 +69,8 @@ class ModeleDAO
         return $modeles;
     }
 
-    public function getAllModeleLibelle(): array {
+    public function getAllModeleLibelle(): array
+    {
         $allLibelle = array();
         foreach ($this->getAll() as $modele) {
             array_push($allLibelle, $modele->getLibelle());
@@ -76,7 +78,8 @@ class ModeleDAO
         return $allLibelle;
     }
 
-    public function update(Modele $modele): bool {
+    public function update(Modele $modele): bool
+    {
         $this->marqueDAO->update($modele->getMarque());
         $this->categorieDAO->update($modele->getCategorie());
 

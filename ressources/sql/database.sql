@@ -1,111 +1,116 @@
-create table locauto.categorie
+CREATE DATABASE locauto;
+CREATE USER 'locadmin'@'localhost' IDENTIFIED BY 'bé*s$f*bà2ç_14ù$*e*';
+GRANT ALL PRIVILEGES ON locauto.* TO user@localhost;
+FLUSH PRIVILEGES;
+
+create table categorie
 (
-    id_categorie varchar(1) not null
-    primary key,
-    libelle varchar(50) not null,
-    prix int not null
+    id_categorie varchar(1)  not null
+        primary key,
+    libelle      varchar(50) not null,
+    prix         int         not null
 );
 
-create table locauto.marque
+create table marque
 (
-    id_marque int not null
-    primary key,
+    id_marque int         not null
+        primary key,
     libelle   varchar(50) not null
 );
 
-create table locauto.modele
+create table modele
 (
-    id_modele int not null
-    primary key,
-    libelle varchar(50) not null,
-    id_categorie varchar(1) not null,
-    id_marque int not null,
-    image varchar(100) not null,
+    id_modele    int          not null
+        primary key,
+    libelle      varchar(50)  not null,
+    id_categorie varchar(1)   not null,
+    id_marque    int          not null,
+    image        varchar(100) not null,
     constraint Modele_Categorie_FK
-    foreign key (id_categorie) references categorie (id_categorie),
+        foreign key (id_categorie) references categorie (id_categorie),
     constraint Modele_Marque0_FK
-    foreign key (id_marque) references marque (id_marque)
+        foreign key (id_marque) references marque (id_marque)
 );
 
-create table locauto.option
+create table `option`
 (
-    id_option int not null
-    primary key,
-    libelle varchar(100) not null,
-    prix decimal not null
+    id_option int          not null
+        primary key,
+    libelle   varchar(100) not null,
+    prix      decimal      not null
 );
 
-create table locauto.type_de_client
+create table type_de_client
 (
-    id_type_de_client int not null
-    primary key,
-    libelle varchar(100) not null
+    id_type_de_client int          not null
+        primary key,
+    libelle           varchar(100) not null
 );
 
-create table locauto.client
+create table client
 (
-    id_client int auto_increment
-    primary key,
-    nom varchar(50) not null,
-    prenom varchar(50) not null,
-    adresse varchar(100) not null,
-    id_type_de_client int not null,
+    id_client         int auto_increment
+        primary key,
+    nom               varchar(50)  not null,
+    prenom            varchar(50)  not null,
+    adresse           varchar(100) not null,
+    id_type_de_client int          not null,
     constraint Client_Type_de_client_FK
-    foreign key (id_type_de_client) references type_de_client (id_type_de_client)
+        foreign key (id_type_de_client) references type_de_client (id_type_de_client)
 );
 
-create table locauto.voiture
+create table voiture
 (
-    id_voiture int auto_increment
-    primary key,
+    id_voiture      int auto_increment
+        primary key,
     immatriculation varchar(50) not null,
-    compteur int not null,
-    id_modele int not null,
+    compteur        int         not null,
+    id_modele       int         not null,
     constraint Voiture_Modele_FK
-    foreign key (id_modele) references modele (id_modele)
+        foreign key (id_modele) references modele (id_modele)
 );
 
-create table locauto.location
+create table location
 (
-    id_location int auto_increment
-    primary key,
-    date_debut date not null,
-    date_fin date not null,
+    id_location    int auto_increment
+        primary key,
+    date_debut     date not null,
+    date_fin       date not null,
     compteur_debut int  not null,
-    compteur_fin int  not null,
-    id_client int  not null,
-    id_voiture int  not null,
+    compteur_fin   int  not null,
+    id_client      int  not null,
+    id_voiture     int  not null,
     constraint Location_Client_FK
-    foreign key (id_client) references client (id_client),
+        foreign key (id_client) references client (id_client),
     constraint Location_Voiture0_FK
-    foreign key (id_voiture) references voiture (id_voiture)
+        foreign key (id_voiture) references voiture (id_voiture)
 );
 
-create table locauto.choix_option
+create table choix_option
 (
     id_option   int not null,
     id_location int not null,
     primary key (id_option, id_location),
     constraint choix_Location0_FK
-    foreign key (id_location) references location (id_location),
+        foreign key (id_location) references location (id_location),
     constraint choix_Option_FK
-    foreign key (id_option) references `option` (id_option)
+        foreign key (id_option) references `option` (id_option)
 );
 
-INSERT INTO locauto.type_de_client
+INSERT INTO `type_de_client`
 VALUES (1, 'Particulier'),
        (2, 'Entreprise'),
        (3, 'Administration'),
        (4, 'Association'),
        (5, 'Longue duree');
 
-INSERT INTO locauto.client
+INSERT INTO `client`
 VALUES (1, 'malkovitch', 'john', 'paradise street', 1),
        (2, 'smith', 'bill', 'hell. city', 2),
        (3, 'murray', 'bill', 'les fleurs du mal', 3),
        (4, 'nature', 'gwendal', 'rennes', 1);
 
-INSERT INTO locauto.categorie
+INSERT INTO `categorie`
 VALUES ('A', 'Citadine', 60),
        ('B', 'Economique', 72),
        ('C', 'Compact', 80),
@@ -115,7 +120,7 @@ VALUES ('A', 'Citadine', 60),
        ('G', 'Sport SUV', 230),
        ('V', 'Luxe', 350);
 
-INSERT INTO locauto.marque
+INSERT INTO `marque`
 VALUES (1, 'Alfa Romeo'),
        (2, 'Ford'),
        (3, 'BMW'),
@@ -132,7 +137,7 @@ VALUES (1, 'Alfa Romeo'),
        (14, 'Porsche'),
        (15, 'Citroen');
 
-INSERT INTO locauto.modele
+INSERT INTO `modele`
 VALUES (1, 'Giulietta', 'D', 1, 'alfa-romeo-giulietta.jpg'),
        (2, 'S-MAX', 'E', 2, 'ford-smax.jpg'),
        (3, 'Série 3', 'D', 3, 'bmw-3.jpg'),
@@ -161,7 +166,7 @@ VALUES (1, 'Giulietta', 'D', 1, 'alfa-romeo-giulietta.jpg'),
        (26, 'Panamera', 'V', 14, 'porsche-panamera.jpg'),
        (27, 'Cinquecento', 'A', 6, 'fiat-500.jpg');
 
-INSERT INTO locauto.option
+INSERT INTO `option`
 VALUES (1, 'Assurance complémentaire', 50),
        (2, 'Nettoyage', 75),
        (3, 'Complément carburant', 30),
@@ -169,7 +174,7 @@ VALUES (1, 'Assurance complémentaire', 50),
        (5, 'Rabais dimanche', -40),
        (6, 'tout propre', 100);
 
-INSERT INTO locauto.voiture
+INSERT INTO `voiture`
 VALUES (1, '123 ABC 456', 2055, 1),
        (2, '215 QKX 284', 27655, 2),
        (3, '234 ATV 765', 5789, 3),
@@ -203,13 +208,13 @@ VALUES (1, '123 ABC 456', 2055, 1),
        (31, '934 KDS 452', 12635, 17),
        (32, '985 FSZ 238', 8543, 20);
 
-INSERT INTO locauto.location
+INSERT INTO `location`
 VALUES (1, '2022-01-01', '2022-01-02', 2001, 2055, 1, 1),
        (2, '2022-03-01', '2022-03-02', 19345, 19867, 1, 4),
        (3, '2022-03-30', '2022-04-01', 6453, 6548, 2, 11),
        (4, '2022-01-15', '2022-01-18', 6345, 6543, 2, 16);
 
-INSERT INTO locauto.choix_option
+INSERT INTO `choix_option`
 VALUES (1, 1),
        (3, 2),
        (3, 3),

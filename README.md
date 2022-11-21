@@ -1,23 +1,20 @@
-# Locauto
-## Présentation
-Web App en PHP/HTML/CSS/JS/Bootstrap pour la gestion de locations de véhicules dans un garage avec une base de données MySQL.
+# LOCAUTO
 
-## README
-Le script sql de la base de données ainsi que le cahier des charges se trouvent dans le dossier ressources.
+Web app de gestion de locations de véhicules dans un garage réalisée en HTML, CSS, JS, Bootstrap pour le frontend
+et PHP pour le backend avec une base de donnée MYSQL.
 
-Le css, le javascript ainsi que les images se trouvent également dans le dossier ressources.
+## INFOS :
 
-L'ensemble du code source php se trouve dans le dossier src.
+Dans le dossier src vous trouverez le code PHP du server. Le endpoint du site se trouve dans l'index.
+Le script SQL de la base de donnée ansi que le cahier des charges se trouvent dans le dossier ressources.
+Le CSS, le javascript ainsi que les images se trouvent également dans le dossiers ressources au même titre qu'un
+script bash qui permet de déployer le service sur un server Linux.
 
-Le fichier .htaccess sert à définir des régles de redirection de page pour le serveur apache.
+## CONNEXION DATABASE :
 
-Le fichier de configuration php se trouve ici : /config/php.ini
-
-## Base de donnée
-#### Connexion base de données -> le fichier se trouve ici : /src/DbConnexion.php
 ```php
-    DB_HOST = 'localhost';
-    DB_NAME = 'locauto';
-    DB_USER = 'root';
-    DB_PASSWORD = '';
+DB_HOST = 'localhost';
+DB_NAME = 'locauto';
+DB_USER = 'locadmin';
+DB_PASSWORD = 'bé*s$f*bà2ç_14ù$*e*';
 ```

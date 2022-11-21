@@ -4,8 +4,8 @@ class DbConnexion
 {
     private static string $DB_HOST = 'localhost';
     private static string $DB_NAME = 'locauto';
-    private static string $DB_USER = 'root';
-    private static string $DB_PASSWORD = '';
+    private static string $DB_USER = 'locadmin';
+    private static string $DB_PASSWORD = 'bé*s$f*bà2ç_14ù$*e*';
     private static PDO $connexion;
 
     private function __construct(){}

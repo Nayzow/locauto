@@ -1,9 +1,9 @@
 <?php
-// Point d'entrée du site et du programme
-class Index {
+// Endpoint du server
+class index {
     public static function main(){
         require_once 'src/core/controller.php';
     }
 }
 
-Index::main();
+index::main();
