@@ -18,7 +18,7 @@
 </header>
 
 <?php
-if(isset($error) && !is_null($error) && $error !== "") {?>
+if(isset($error) && !is_null($error) && $error != "") {?>
     <div class="alert alert-danger m-4" role="alert">
     <?php echo $error ?>
     </div><?php
