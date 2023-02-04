@@ -2,7 +2,7 @@
 
 class DbConnexion
 {
-    private static string $DB_HOST = 'localhost';
+    private static string $DB_HOST = 'localhost:4000';
     private static string $DB_NAME = 'locauto';
     private static string $DB_USER = 'locadmin';
     private static string $DB_PASSWORD = 'bé*s$f*bà2ç_14ù$*e*';
