@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: nayzow/locauto-database
+    ports:
+      - "3306:3306"
+
+  backend:
+    image: nayzow/locauto-backend
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+    restart: always
