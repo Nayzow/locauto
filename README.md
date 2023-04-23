@@ -11,6 +11,7 @@ et PHP pour le backend avec une base de donnée MYSQL.
 
 ## Documentation
 
+<<<<<<< HEAD
 ### Backend :
 - PHP
 - Github : https://github.com/Nayzow/locauto/tree/main/backend
@@ -20,6 +21,12 @@ et PHP pour le backend avec une base de donnée MYSQL.
 - MySQL
 - Github : https://github.com/Nayzow/locauto/tree/main/database
 - Docker Hub : https://hub.docker.com/r/nayzow/locauto-database
+=======
+Dans le dossier src vous trouverez le code PHP du server. Le endpoint du site se trouve dans l'index.
+Le script SQL de la base de donnée ansi que le cahier des charges du TP se trouvent dans le dossier ressources.
+Le CSS, le javascript ainsi que les images se trouvent également dans le dossier ressources.
+### Connexion à la base de données
+>>>>>>> 646d59b720a327e5c7a658811fdc5d57b342b14f
 
 ## Déploiement
 
